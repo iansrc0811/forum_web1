@@ -11,7 +11,8 @@
   <div class="container">
     <%= yield %>
   </div>
-  <%= js add_gritter(flash[:notice], title: "Notification", sticky: false) %>
+
+  <%= render 'shared/alert' %>
   <%= render 'shared/footer' %>
 </body>
 </html>

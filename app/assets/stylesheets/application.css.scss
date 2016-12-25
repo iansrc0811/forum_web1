@@ -2,13 +2,6 @@
 @import "bootstrap";
 @import "gritter";
 
-
-body {
-
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-
 .footer {
   position: absolute;
   bottom: 0;
@@ -27,4 +20,8 @@ body {
 .footer ul li{
   float: left;
   margin-left: 15px;
+}
+
+.center {
+  text-align: center;
 }
