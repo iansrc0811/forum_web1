@@ -1,0 +1,16 @@
+
+<tr>
+  <td>
+    <%= link_to "#{list.name}", list_path(list)%>
+  </td>
+  <td>
+    <%= simple_format(list.description) %>
+  </td>
+  <td>
+    <%= link_to 'edit', edit_list_path(list) %>
+  </td>    
+
+  <td>
+    <%= link_to 'delete', list_path(list), method: :delete %>
+  </td>    
+</tr>

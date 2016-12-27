@@ -1,0 +1,2 @@
+class MovieList < List 
+end

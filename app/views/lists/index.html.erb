@@ -1,0 +1,19 @@
+<h1>Your Lists</h1>
+<%= will_paginate %>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>
+        List Name
+      </th>
+      <th>
+        Description
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+   <%= render @lists %> 
+   <!--render _list.html.erb  rails magic -->
+ </tbody>
+</table>
+<%= will_paginate %>

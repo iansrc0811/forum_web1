@@ -1,0 +1,5 @@
+<h1><%= @list.name %> by <%= @list.user.full_name %></h1>
+
+<% if @list.articles.any? %>
+  <p> Lists: <%= render 'articles/article', obj:@list.articles %> </p>
+<% end %>
