@@ -7,16 +7,12 @@ AdminUser.create(email: "ian_admin@example.com", password: 'testtest',
 puts "1 admin user created"
 
 15.times do |list|
-  List.create!(name: "List #{list}", description:" Description #{list}", 
+  @list = List.create!(name: "List #{list}", description:" Description #{list}", 
     user_id: @user.id)
 
   20.times do |article|
     @article = Article.create!(title: "List #{list} No. #{article} Article of List #{list}", description: "No.#{article} Description of List #{list}")
-    #@article.errors.full_messages.each do |message|
-     # puts "message"
-    #end
-    puts "list #{list}"
-    puts "artilce #{article}"
+    @article.lists << @list  # many to many association
   end
 end
 
