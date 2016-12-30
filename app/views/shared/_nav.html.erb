@@ -1,12 +1,4 @@
-<% if current_user %>
- <%= link_to('登出', destroy_user_session_path, :method => :delete) %> 
- |
- <%= link_to('修改密碼', edit_registration_path(:user)) %>
-<% else %>
- <%= link_to('註冊', new_registration_path(:user)) %>
-  |
-  <%= link_to('登入', new_session_path(:user)) %>
-<% end %>
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -18,7 +10,7 @@
         <span class="icon-bar"></span>
       </button>
       <%= link_to 'Lists.com', root_path, class: "navbar-brand" %> 
-      
+      <%= link_to 'lists', lists_path, class: "navbar-brand" %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -44,6 +36,11 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to('登出', destroy_user_session_path, :method => :delete) %> </li>
         <li><%= link_to('修改密碼', edit_registration_path(:user)) %></li>
+      </ul>
+    <% else %>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to('註冊', new_registration_path(:user)) %> </li>
+        <li><%= link_to('登入', new_session_path(:user)) %> </li>
       </ul>
     <% end %>
     </div><!-- /.navbar-collapse -->
