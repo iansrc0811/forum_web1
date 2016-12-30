@@ -37,3 +37,4 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
 gem 'puma'
+gem 'rails_12factor', group: :production
