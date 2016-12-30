@@ -1,5 +1,6 @@
-<h1>所有的書單</h1>
-<%= will_paginate %>
+<h1><%= @user.nick_name %></h1>
+<hr>
+
 <table class="table table-hover">
   <thead>
     <tr>
@@ -12,8 +13,7 @@
     </tr>
   </thead>
   <tbody>
-   <%= render 'list', obj:@lists %> 
+   <%= render 'lists/list', obj:@user.lists %> 
    <!--render _list.html.erb  rails magic -->
  </tbody>
 </table>
-<%= will_paginate %>

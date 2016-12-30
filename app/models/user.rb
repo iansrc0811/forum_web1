@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name, :last_name, :nick_name
 
   def full_name
-    last_name.upcase + ", " + first_name.upcase
+    last_name.upcase + " " + first_name.upcase
   end
   
 end
