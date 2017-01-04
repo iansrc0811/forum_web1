@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [:show]
   before_action :set_list, only: [:edit, :update, :show, :destroy]
 
   def index

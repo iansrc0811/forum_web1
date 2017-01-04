@@ -10,7 +10,7 @@
         <span class="icon-bar"></span>
       </button>
       <%= link_to 'Lists.com', root_path, class: "navbar-brand" %> 
-      <%= link_to 'lists', lists_path, class: "navbar-brand" %>
+      
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -22,8 +22,8 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">前往 <span class="caret"></span></a>
           <ul class="dropdown-menu">
           
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
+            <li><%= link_to "My #{pluralize(current_user.lists.count, "list")}", user_path(current_user)%></li>
+            <li><%= link_to "lists from other users", lists_path %></li>
             <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Separated link</a></li>
