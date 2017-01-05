@@ -22,9 +22,11 @@ class ListsController < ApplicationController
   end
 
   def edit
+    authorize @list
   end
 
   def update
+    authorize @list
     if @list.update(list_params)
       flash[:success] = "List was successfully updated"
       redirect_to list_path(@list)

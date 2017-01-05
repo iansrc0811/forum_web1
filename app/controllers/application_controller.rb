@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def user_not_authorized
-    flash[:alert] =  "禁止: 非管理員不可執行此動作"
-    redirect_to(root_path)
+    flash[:alert] =  "禁止: 非管理員或本人不可執行此動作"
+    redirect_to("../")
   end
 
   def configure_permitted_parameters

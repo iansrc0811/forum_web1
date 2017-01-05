@@ -38,3 +38,4 @@ gem 'bootstrap-will_paginate'
 
 gem 'puma'
 gem 'rails_12factor', group: :production
+gem 'mechanize', '~> 2.7', '>= 2.7.4' #爬蟲gem
