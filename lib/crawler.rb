@@ -1,4 +1,9 @@
-module ApplicationHelper
+require 'rubygems'
+require 'nokogiri'
+require 'mechanize'
+require 'open-uri'
+
+module Crawler
 
   def get_book_names(book_name)
     book_item = self.start_crawler(book_name)
@@ -8,7 +13,7 @@ module ApplicationHelper
     end
 
     return book_names
-  end 
+  end #end get_book_list
 
   def get_book_links(book_name)
     book_item = self.start_crawler(book_name)
@@ -27,6 +32,7 @@ module ApplicationHelper
     books_url = "http://www.books.com.tw/"
     page = agent.get(books_url)
 
+    books_foagent = Mechanize.new
     books_form = page.form('search')
     books_form.key = book_name
 

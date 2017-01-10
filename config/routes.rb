@@ -3,12 +3,12 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, :only => [:show]
 
-  root'pages#home'
+  root 'pages#home'
   get 'about', to: 'pages#about'
 
   resources :articles
   resources :lists 
-  get  '*path', to: redirect('public/404.html') 
+  #get  '*path', to: redirect('/') 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

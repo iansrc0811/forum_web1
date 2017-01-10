@@ -1,0 +1,2 @@
+class ArticlePolicy < ListPolicy
+end

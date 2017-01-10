@@ -8,12 +8,24 @@ class ListPolicy < ApplicationPolicy
     end
   end
 
+  def create?
+    if user
+      true
+    else
+      false
+    end
+  end
+
   private
     def user_or_admin
-      
-      record.user_id == user.id || admin?
-
+      if
+        record.user_id == user.id || admin?
+        true
+      else
+        false
+      end
     end
+    
     def admin?
       admin_types.include?(user.type)
     end

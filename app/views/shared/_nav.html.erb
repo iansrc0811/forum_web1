@@ -27,8 +27,9 @@
             <li><%= link_to "lists from other users", lists_path %></li>
           </ul>
         </li>
-
+        <% if current_user %>
         <li><%= link_to "新增清單", new_list_path %></li>
+        <% end %>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">

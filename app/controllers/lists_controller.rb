@@ -7,10 +7,13 @@ class ListsController < ApplicationController
   end
 
   def new
-     @list = List.new
+    
+    @list = List.new
+    authorize @list
   end
 
   def create
+    authorize @list
     @list = List.new(list_params)
     @list.user = current_user
     if @list.save
@@ -45,6 +48,7 @@ class ListsController < ApplicationController
   end
 
   private
+
     def set_list
       @list = List.find(params[:id])
     end
@@ -52,5 +56,4 @@ class ListsController < ApplicationController
     def list_params
       params.require(:list).permit(:name,:description, article_ids: [])
     end
-
 end
