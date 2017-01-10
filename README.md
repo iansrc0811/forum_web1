@@ -5,6 +5,7 @@
 * Article model (book)
 * User-List (one-to-many)
 List-Article (many-to-many)
+
 #### 情境
 * User 可以建立書單(List)， 每個List中可以加入書名(Article)
 * 使用爬蟲爬博客來(http://www.books.com.tw/)上User輸入的關鍵字，找到書名後加入清單。
