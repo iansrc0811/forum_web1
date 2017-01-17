@@ -1,5 +1,9 @@
 <h1><%= @list.name %> by <%= @list.user.nick_name %></h1>
-<%= render 'add_article_form' %>
+
+<%= form_tag('/search_book', method: :get) do %>
+    <input name="query" type="text" value="" placeholder="請輸入書名" />
+
+<% end %>
 
 <% if @list.articles.any? %>
   <p> Lists: <%= render 'articles/article', obj:@list.articles %> </p>

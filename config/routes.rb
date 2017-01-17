@@ -5,10 +5,11 @@ Rails.application.routes.draw do
 
   root 'pages#home'
   get 'about', to: 'pages#about'
+  get 'search_book', to: 'search#search_book'
 
-  resources :articles
+  resources :articles, skip: [:new]
   resources :lists 
-  
+
   #get  '*path', to: redirect('/') 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
