@@ -1,0 +1,10 @@
+<div id="item-lookup">
+  <%= form_tag('/search_book', id: 'item-lookup-form', remote: true, method: :get) do %>
+    <input name="query" type="text" value="" width="100" placeholder="搜尋並按Enter送出" />
+    <input class="btn" type="submit"  value="確認" width="48" height="30">
+  <% end %>
+  <div id="item-lookup-results">
+    <%= render '/search/show_result' %> <!--產生result  的 partial -->
+  </div>
+  <div id="item-lookup-errors"></div>
+</div>

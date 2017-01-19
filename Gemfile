@@ -40,3 +40,4 @@ gem 'puma'
 gem 'rails_12factor', group: :production
 gem 'mechanize', '~> 2.7', '>= 2.7.4' #爬蟲gem
 gem 'nokogiri'
+gem 'addressable', '~> 2.4' # 處理url中非英文輸入

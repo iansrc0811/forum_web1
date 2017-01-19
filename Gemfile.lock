@@ -254,6 +254,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable (~> 2.4)
   administrate (~> 0.3.0)
   bootstrap-sass (~> 3.3, >= 3.3.6)
   bootstrap-will_paginate

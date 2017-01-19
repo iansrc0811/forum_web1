@@ -5,9 +5,11 @@ class SearchController < ApplicationController
   def search_book
     input = params[:query]
 
-    @book_names = Crawler.get_book_names(input)
-    @book_links = Crawler.get_book_links(input)
-    @book_images = Crawler.get_book_image(input)
-    render '/search/show_result'
+    @book_items = Crawler.start_crawler(input)
+    if @book_items
+      render partial:'/lists/search_books' #不確instant可不可以傳入partial的partial 
+    else
+      render status: :not_found, nothing: true 
+    end
   end
 end
