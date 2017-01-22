@@ -41,3 +41,4 @@ gem 'rails_12factor', group: :production
 gem 'mechanize', '~> 2.7', '>= 2.7.4' #爬蟲gem
 gem 'nokogiri'
 gem 'addressable', '~> 2.4' # 處理url中非英文輸入
+gem 'font-awesome-sass' #好用小圖示 http://fontawesome.io/get-started/

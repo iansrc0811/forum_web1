@@ -2,12 +2,12 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, :only => [:show]
-
+  resources :article_lists, except: [:show, :edit, :updat]
   root 'pages#home'
   get 'about', to: 'pages#about'
   get 'search_book', to: 'search#search_book'
 
-  resources :articles, skip: [:new]
+  resources :articles, except: [:edit, :update]
   resources :lists 
 
   #get  '*path', to: redirect('/') 

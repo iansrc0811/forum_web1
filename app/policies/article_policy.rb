@@ -1,2 +1,2 @@
-class ArticlePolicy < ListPolicy
+class ArticlePolicy < ApplicationPolicy
 end

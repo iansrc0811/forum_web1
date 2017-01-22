@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   skip_before_action :authenticate_user!
-  before_action :set_article, only: [:edit, :update, :show, :destroy]
+  before_action :set_article, only: [:show, :destroy]
 
   def index
     @articles = Article.paginate(page: params[:page], per_page: 10)
@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
       render 'new'
     end
   end
-
+=begin
   def edit
     authorize @article
   end
@@ -36,7 +36,7 @@ class ArticlesController < ApplicationController
       render 'edit'
     end
   end
-
+=end
   def show
   end
 
@@ -52,7 +52,7 @@ class ArticlesController < ApplicationController
     end
     
     def article_params
-      params.require(:article).permit(:title,:description)
+      params.require(:article).permit(:title, :link, :image)
     end
 
 end

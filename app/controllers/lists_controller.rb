@@ -13,8 +13,9 @@ class ListsController < ApplicationController
   end
 
   def create
-    authorize @list
+    
     @list = List.new(list_params)
+    authorize @list
     @list.user = current_user
     if @list.save
       flash[:success] = "List was successfully created"

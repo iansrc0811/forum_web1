@@ -19,7 +19,7 @@ puts "1 admin has been created"
     user_id: @user.id)
 
   20.times do |article|
-    @article = Article.create!(title: "書單 #{list} No. #{article} Article of List #{list}", description: "No.#{article} Description of List #{list}")
+    @article = Article.create!(title: "書單 #{list} No. #{article} Article of List #{list}")
     @article.lists << @list  # many to many association
   end
 end
@@ -29,7 +29,7 @@ end
     user_id: @user2.id)
 
   3.times do |article|
-    @article = Article.create!(title: "List #{list} No. #{article} Article of List #{list}", description: "No.#{article} Description of List #{list}")
+    @article = Article.create!(title: "List #{list} No. #{article} Article of List #{list}")
     @article.lists << @list  # many to many association
   end
 end
