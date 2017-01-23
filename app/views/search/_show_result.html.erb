@@ -1,7 +1,7 @@
 <!--如果未登入就做成臨時的list，可以馬上登入以存入此list -->
 <!-- 專門用來產生result的partial-->
 <!-- render from '_search_books.html.erb' -->
-<%# if obj %>
+
 <div id="item-result" >
   <table class="table table-hover">
     <thead>
@@ -34,14 +34,13 @@
            <%= link_to @book_items[0][books], @book_items[1][books],:target => "_blank"%>
           </td>    
           <td>
-          
+         
           </td>
         </tr>
-     <% end %>
+      <% end %>
    
    </tbody>
   <table>
 </div>
-
 <h3><%#= link_to "取消選取並回到清單畫面", "#{request.referrer}" %></h3> 
 <!-- 回到上一頁 -->
