@@ -5,11 +5,12 @@ Rails.application.routes.draw do
   resources :article_lists, except: [:show, :edit, :updat]
   root 'pages#home'
   get 'about', to: 'pages#about'
-  get 'search_book', to: 'search#search_book'
+  
 
   resources :articles, except: [:edit, :update]
-  resources :lists 
-
+  get 'search_book', to: 'lists#search_book'  
+  resources :lists, except: [:search_book]
+  
   #get  '*path', to: redirect('/') 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

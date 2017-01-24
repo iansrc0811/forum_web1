@@ -1,5 +1,4 @@
 <!-- render from 'views/lists/show.html.erb' -->
-
 <div id="item-lookup">
   <%= form_tag('/search_book', id: 'item-lookup-form', remote: true, method: :get) do %>
   <div class="form-group row no-padding text-center col-md-12">
@@ -23,7 +22,50 @@
   
   <% if @book_items %>
     <div id="item-lookup-results">
-      <%= render '/search/show_result'%> <!--產生result  的 partial -->
+      <%#= render '/search/show_result'%> <!--產生result  的 partial -->
+            
+      <div id="item-result" >
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>
+                搜尋結果
+              </th>
+              <th>
+                
+              </th>
+              <th>
+
+              </th>
+              <th>
+                
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @book_items[0].count.times do |books| %>
+              <tr>
+                <td>
+                  <%= "#{books+1}" %>
+
+                </td>
+                <td>
+                  <%= image_tag @book_items[2][books], id:"image_select", alt: "book-image", class: "img-thumbnail" %>
+                </td>
+                <td>
+                 <%= link_to @book_items[0][books], @book_items[1][books],:target => "_blank"%>
+                </td>    
+                <td>
+               
+                  <%= link_to "加入書單", article_lists_path(list_id: @list.id, item_name: @book_items[0][books], item_link: @boook_items[1][books], item_image: @book_items[2][books]), class: 'btn btn-xs btn-success', method: :post %>
+                  
+                </td>
+              </tr>
+            <% end %>
+         
+         </tbody>
+        <table>
+      </div>
     </div>
   <% end %>
   <div id="item-lookup-errors"></div>

@@ -8,7 +8,7 @@ class SearchController < ApplicationController
     @book_items = Crawler.start_crawler(input) 
     
     if @book_items
-      render partial:'/lists/search_books' 
+      render '/lists/show'
     else
       render status: :not_found, nothing: true 
     end

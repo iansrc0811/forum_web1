@@ -35,6 +35,8 @@
           </td>    
           <td>
          
+            <%= link_to "加入書單", article_lists_path(list_id: @list.id, item_name: @book_items[0][books], item_link: @boook_items[1][books], item_image: @book_items[2][books]), class: 'btn btn-xs btn-success', method: :post %>
+            
           </td>
         </tr>
       <% end %>

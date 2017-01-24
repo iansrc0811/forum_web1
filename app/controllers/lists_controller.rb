@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+  include Crawler
   skip_before_action :authenticate_user!, only: [:show]
   before_action :set_list, only: [:edit, :update, :show, :destroy]
 
@@ -47,7 +48,17 @@ class ListsController < ApplicationController
     flash[:danger] = 'List was successfully deleted'
     redirect_to lists_path
   end
-
+  def search_book
+    input = params[:query]
+    
+    @book_items = Crawler.start_crawler(input) 
+    
+    if @book_items
+      render 'show'
+    else
+      render status: :not_found, nothing: true 
+    end
+  end
   private
 
     def set_list
