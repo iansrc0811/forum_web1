@@ -1,4 +1,4 @@
-  
+
 <h1><%= @list.name %> by <%= @list.user.nick_name %></h1>
 
 <%  if current_user and current_user.id == @list.user.id  %>
@@ -9,10 +9,10 @@
        <div class="col-md-10">
         <!--<input name="query" type="text" value="" width="100" placeholder="搜尋並按Enter送出" />-->
         <%= text_field_tag :query ,
-        params[:query],
-        placeholder: '搜尋書名',
-        autofocus: true,
-        class: 'form-control search-box input-lg' %>
+          params[:query],params[:list.id],
+          placeholder: '搜尋書名',
+          autofocus: true,
+          class: 'form-control search-box input-lg' %>
       </div>
       <div class="col-md-2">
         <%= button_tag(type: :submit, class: 'btn btn-lg btn-success') do %>
@@ -68,7 +68,7 @@
           <table>
         </div>
       </div>
-   
+    <% end %>
     <div id="item-lookup-errors"></div>
   </div>
 <% end %>
