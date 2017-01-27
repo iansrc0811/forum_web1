@@ -4,12 +4,12 @@
 <%  if current_user and current_user.id == @list.user.id  %>
 <%#= render 'search_books' %>
   <div id="item-lookup">
-    <%= form_tag('/search_book', id: 'item-lookup-form', remote: true, method: :get) do %>
+    <%= form_tag('/search_book', :list => @list.id, id: 'item-lookup-form', remote: true, method: :get) do %>
       <div class="form-group row no-padding text-center col-md-12">
        <div class="col-md-10">
         <!--<input name="query" type="text" value="" width="100" placeholder="搜尋並按Enter送出" />-->
         <%= text_field_tag :query ,
-          params[:query],params[:list.id],
+          params[:query],
           placeholder: '搜尋書名',
           autofocus: true,
           class: 'form-control search-box input-lg' %>
