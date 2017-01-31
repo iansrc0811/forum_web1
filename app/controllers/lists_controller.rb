@@ -50,7 +50,7 @@ class ListsController < ApplicationController
   end
   def search_book
     input = params[:query]
-    
+    @list = List.find(params[:list_id])
     @book_items = Crawler.start_crawler(input) 
     
     if @book_items

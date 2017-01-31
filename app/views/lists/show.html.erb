@@ -4,7 +4,7 @@
 <%  if current_user and current_user.id == @list.user.id  %>
 <%#= render 'search_books' %>
   <div id="item-lookup">
-    <%= form_tag('/search_book', id: 'item-lookup-form', remote: true, method: :get, data: { list_id: @list_id }) do %>
+    <%= form_tag(search_book_path(:list_id => @list.id), id: 'item-lookup-form', remote: true, method: :get) do %>
       <div class="form-group row no-padding text-center col-md-12">
        <div class="col-md-10">
         <!--<input name="query" type="text" value="" width="100" placeholder="搜尋並按Enter送出" />-->
@@ -59,8 +59,7 @@
                   </td>    
                   <td>
 
-                    <%= link_to "加入書單", article_lists_path(list_id: @list.id, item_name: @book_items[0][books], item_link: @boook_items[1][books], item_image: @book_items[2][books]), class: 'btn btn-xs btn-success', method: :post %>
-
+                    
                   </td>
                 </tr>
               <% end %>
