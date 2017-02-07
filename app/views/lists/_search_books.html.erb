@@ -1,6 +1,6 @@
 <!-- render from 'views/lists/show.html.erb' -->
 <div id="item-lookup">
-  <%= form_tag('/search_book', id: 'item-lookup-form', remote: true, method: :get) do %>
+  <%= form_tag(search_book_path(:list_id => @list.id), id: 'item-lookup-form', remote: true, method: :get) do %>
   <div class="form-group row no-padding text-center col-md-12">
     <div class="col-md-10">
       <!--<input name="query" type="text" value="" width="100" placeholder="搜尋並按Enter送出" />-->
@@ -67,6 +67,10 @@
         <table>
       </div>
     </div>
+    <% if @list.articles.any? %>
+      <p> <%= render 'articles/article', obj:@list.articles %> </p>
+    <% end %>
   <% end %>
   <div id="item-lookup-errors"></div>
+  
 </div>
