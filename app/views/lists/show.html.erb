@@ -4,6 +4,9 @@
 <%  if current_user and current_user.id == @list.user.id  %>
   <%= render 'search_books' %>
 <% end %>
+<h1>List articls:</h1>
+<%= @list.name %>
+
 <% if @list.articles.any? %>
   <p> <%= render 'articles/article', obj:@list.articles %> </p>
 <% end %>
