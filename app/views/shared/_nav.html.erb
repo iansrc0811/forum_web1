@@ -22,9 +22,9 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">前往 <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <% if current_user %>
-              <li><%= link_to "My #{pluralize(current_user.lists.count, "list")}", user_path(current_user)%></li>
+              <li><%= link_to "自己的 #{current_user.lists.count} 個清單", user_path(current_user)%></li>
             <% end %>
-            <li><%= link_to "lists from other users", lists_path %></li>
+            <li><%= link_to "全部的公開清單", lists_path %></li>
           </ul>
         </li>
         <% if current_user %>
