@@ -79,10 +79,9 @@ class ArticleListsController < ApplicationController
   # DELETE /article_lists/1.json
   def destroy
     @article_list.destroy
-    respond_to do |format|
-      format.html { redirect_to article_lists_url, notice: 'Article list was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    list = List.find(params[:list_id])
+    redirect_to list_path(list.id), notice: 'Article list was successfully destroyed.'
+     
   end
 
   private

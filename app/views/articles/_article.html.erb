@@ -48,8 +48,7 @@
             <%= link_to books.title, books.link,:target => "_blank"%> 
           </td>    
           <td>
-
-            
+            <%= link_to "刪除", article_list_path(books,:list_id => @list.id), method: :delete, data: {confirm: "確定刪除嗎? "}, class: 'btn btn-xs btn-danger' %>       
           </td>
         </tr>
       <% end %>
