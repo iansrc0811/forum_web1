@@ -1,9 +1,12 @@
-
+<!--
 <% obj.each do |article| %>
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
       <div class="well well-lg">
         <div class="article-title">
+        <% if article.image %>
+        <%= image_tag article.image, id:"image_select", alt: "book-image", class: "img-thumbnail" %> 
+        <% end %>
           <%= link_to article.title, article_path(article) %>
         </div>
        
@@ -12,3 +15,43 @@
     </div>
   </div>
 <% end %>
+-->
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>
+          清單項目
+        </th>
+        <th>
+
+        </th>
+        <th>
+
+        </th>
+        <th>
+
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% obj.each do |books| %>
+      <%# @book_items[0].count.times do |books| %>
+        <tr>
+          <td>
+            <%#= "#{books+1}" %>
+
+          </td>
+          <td>
+            <%= image_tag books.image, id:"image_select", alt: "book-image", class: "img-thumbnail" if books.image%> 
+          </td>
+          <td>
+            <%= link_to books.title, books.link,:target => "_blank"%> 
+          </td>    
+          <td>
+
+            
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  <table>

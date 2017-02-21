@@ -14,7 +14,7 @@ init_item_lookup = function(){
   $('#item-lookup-form').on('ajax:error', function(event, xhr, status, error){
     hide_spinner();
     $('#item-lookup-results').replaceWith('');
-    $('#item-lookup-errors').replaceWith('ajax error: '+error)
+    $('#item-lookup-errors').replaceWith('ajax error: ' + error)
   });
 }
 

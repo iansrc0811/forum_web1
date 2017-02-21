@@ -24,28 +24,41 @@ class ArticleListsController < ApplicationController
   # POST /article_lists
   # POST /article_lists.json
   def create
-    if params[:item_name].present?
+    @list = List.find(params[:list_id])
+    if params[:item_name].present? and @list
+      
       article = Article.find_by_name(params[:item_name])
-      if (article)#如果在db裡已經有此項目
-        @article_list = ArticleList.new(article_id: article.id, list_id: @list.id)
-      else #沒在db裡，要新增至db 
+      if article#如果在Article db裡已經有此項目, 簡查是否在ArticleList中已經有存過同樣的article.id和list_id組合
+        if ArticleList.repeat?(article, @list)
+          #已經在此list中加入過此書
+          #應該要不顯示「加入清單」的選項，或是顯示「已加入」
+          flash[:error] = "清單中已存在此項目"
+        else
+          @article_list = ArticleList.new(article_id: article.id, list_id: @list.id)
+        end
+        
+      else #沒在article db裡，要新增至article db , 再加入articlelist db
         article = Article.new_by_search(params[:item_name], params[:item_link], params[:item_image])
-        @article_list = ArticleList.new(article_id: article.id, list_id: @list.id)
+        if article.save
+          @article_list = ArticleList.new(article_id: article.id, list_id: @list.id)
+        else
+          @article_list = nil
+          flash[:error] = "無法加入"
+        end
       end
     else
-      @article_list = nill
-      flash[:error] = "無法加入此項目"
+      #@article_list = nill
+      flash[:error] = "無法加入此項目 檢查@list"
     end
 
-    respond_to do |format|
-      if @article_list.save
-        format.html { redirect_to search_book_path, notice: 'Article list was successfully created.' }
-        format.json { render :show, status: :created, location: @article_list }
-      else
-        format.html { render :new }
-        format.json { render json: @article_list.errors, status: :unprocessable_entity }
-      end
+    if @article_list and @article_list.save
+      redirect_to list_path(@list.id), notice: 'Article list was successfully created.' 
+
+    else
+      redirect_to list_path(@list.id), notice: 'faild to add to list'
+
     end
+
   end
 
   # PATCH/PUT /article_lists/1

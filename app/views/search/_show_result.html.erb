@@ -10,13 +10,13 @@
           搜尋結果
         </th>
         <th>
-          
+
         </th>
         <th>
 
         </th>
         <th>
-          
+
         </th>
       </tr>
     </thead>
@@ -28,21 +28,17 @@
 
           </td>
           <td>
-            <%= image_tag @book_items[2][books], id:"image_select", alt: "book-image", class: "img-thumbnail" %>
+            <%= image_tag @book_items[2][books], id:"image_select", alt: "book-image", class: "img-thumbnail" %> 
           </td>
           <td>
-           <%= link_to @book_items[0][books], @book_items[1][books],:target => "_blank"%>
+            <%= link_to @book_items[0][books], @book_items[1][books],:target => "_blank"%> 
           </td>    
           <td>
-         
-            <%= link_to "加入書單", article_lists_path(list_id: @list.id, item_name: @book_items[0][books], item_link: @boook_items[1][books], item_image: @book_items[2][books]), class: 'btn btn-xs btn-success', method: :post %>
+             <%= link_to "add", article_lists_path(:item_name => @book_items[0][books],:item_link => @book_items[1][books], :item_image => @book_items[2][books], :list_id => @list.id),  class: 'btn btn-xs btn-success', method: :post  %>
             
           </td>
         </tr>
       <% end %>
-   
-   </tbody>
+    </tbody>
   <table>
 </div>
-<h3><%#= link_to "取消選取並回到清單畫面", "#{request.referrer}" %></h3> 
-<!-- 回到上一頁 -->

@@ -9,7 +9,7 @@ class SearchController < ApplicationController
     
     if @book_items
 
-      render '/lists/show'
+      
 
     else
       render status: :not_found, nothing: true 
