@@ -4,8 +4,8 @@
 <%  if current_user and current_user.id == @list.user.id  %>
 <%#= render 'search_books' %>
   <div id="item-lookup">
-    <%= form_tag(search_book_path(:list_id => @list.id), id: 'item-lookup-form', remote: true, method: :get) do %>
-      <div class="form-group row no-padding text-center col-md-12">
+    <%= form_tag(search_book_path(:list_id => @list.id), id: 'item-lookup-form', remote: true, method: :post) do %>
+      <div class="form-group row no-padding text-center col-md-12" >
        <div class="col-md-10">
         <!--<input name="query" type="text" value="" width="100" placeholder="搜尋並按Enter送出" />-->
         <%= text_field_tag :query ,
@@ -21,10 +21,17 @@
         <!--input class="btn" type="submit"  value="確認" width="48" height="30"-->
       </div>
       <%= render 'shared/spinner' %>
-    <h3>請先確認已在<%= link_to "博客來", "http://www.books.com.tw/"%>中登入</h3>
+    
     <% end %>
 
-    
+    <div class="row" id="shopping_car" >
+      <div class=" col-md-6 offset-md-3" >
+        <h4>請先確認已在<%= link_to "博客來", "http://www.books.com.tw/"%>中登入</h4>
+      </div>
+      <div class="col-md-3" >
+        <%= link_to "將現在購物車商品移至下次購買，並將以下商品加入購物車", add_to_shop_car_path(:list_id => @list.id),method: :post, class: ' btn btn-primary'%>
+      </div>
+    </div>
 
     <% if @book_items %>
       <div id="item-lookup-results">

@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   
 
   resources :articles, except: [:edit, :update]
-  get 'search_book', to: 'lists#search_book'  
+  post 'search_book', to: 'lists#search_book' 
+  post 'add_to_shop_car', to: 'lists#add_to_shop_car'
   resources :lists, except: [:search_book]
   
   #get  '*path', to: redirect('/') 

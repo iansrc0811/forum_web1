@@ -48,6 +48,7 @@ class ListsController < ApplicationController
     flash[:danger] = 'List was successfully deleted'
     redirect_to lists_path
   end
+
   def search_book
     input = params[:query]
     @list = List.find(params[:list_id])
@@ -59,6 +60,12 @@ class ListsController < ApplicationController
       render status: :not_found, nothing: true 
     end
   end
+
+  def add_to_shop_car
+    @list = List.find(params[:list_id])
+    redirect_to list_path(@list)
+  end
+
   private
 
     def set_list
