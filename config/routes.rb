@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :articles, except: [:edit, :update]
   get 'search_book', to: 'lists#search_book'  
   resources :lists, except: [:search_book]
+  get "*path", to: redirect('/')
   
   #get  '*path', to: redirect('/') 
   # The priority is based upon order of creation: first created -> highest priority.
