@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, :only => [:show]
   resources :article_lists, except: [:show, :edit, :updat]
-  root 'pages#home'
+  root 'lists#index'
   get 'about', to: 'pages#about'
   
 
