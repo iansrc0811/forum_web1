@@ -41,6 +41,7 @@ class ListsController < ApplicationController
   end
 
   def show
+    @list_articles = @list.articles
   end
 
   def destroy

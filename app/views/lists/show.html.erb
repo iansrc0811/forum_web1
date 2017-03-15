@@ -36,5 +36,6 @@
 <% end %>
 
 <% if @list.articles.any? %>
-  <p> <%= render 'articles/article', obj:@list.articles %> </p>
+  <%#= @list_articles = @list.articles %>.
+  <p> <%= render 'articles/article', obj:@list_articles %> </p>
 <% end %>

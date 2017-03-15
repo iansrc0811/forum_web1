@@ -273,7 +273,7 @@ DEPENDENCIES
   jquery-rails
   mechanize (~> 2.7, >= 2.7.4)
   nokogiri
-  pg (~> 0.15)
+  pg (~> 0.19)
   puma
   pundit (~> 1.1)
   rails (= 4.2.6)

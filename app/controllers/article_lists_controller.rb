@@ -1,5 +1,5 @@
 class ArticleListsController < ApplicationController
-  before_action :set_article_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_article_list, only: [:show, :edit, :update]
 
   # GET /article_lists
   # GET /article_lists.json
@@ -79,8 +79,9 @@ class ArticleListsController < ApplicationController
   # DELETE /article_lists/1.json
   def destroy
     @article_list.destroy
-    list = List.find(params[:list_id])
-    redirect_to list_path(list.id), notice: 'Article list was successfully destroyed.'
+
+    @list = List.find(params[:list_id])
+    redirect_to list_path(@list.id), notice: 'Article list was successfully destroyed.'
      
   end
 
