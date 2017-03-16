@@ -34,7 +34,7 @@
             <%= link_to @book_items[0][books], @book_items[1][books],:target => "_blank"%> 
           </td>    
           <td>
-             <%= link_to "add", article_lists_path(:item_name => @book_items[0][books],:item_link => @book_items[1][books], :item_image => @book_items[2][books], :list_id => @list.id),  class: 'btn btn-xs btn-success', method: :post  %>
+             <%= link_to "新增至清單", article_lists_path(:item_name => @book_items[0][books],:item_link => @book_items[1][books], :item_image => @book_items[2][books], :list_id => @list.id),  class: 'btn btn-xs btn-success', method: :post  %>
             
           </td>
         </tr>

@@ -1,5 +1,6 @@
 class ArticleListsController < ApplicationController
   before_action :set_article_list, only: [:show, :edit, :update]
+  before_action :set_article_list_destroy, only: [:destroy]
 
   # GET /article_lists
   # GET /article_lists.json
@@ -28,7 +29,7 @@ class ArticleListsController < ApplicationController
     if params[:item_name].present? and @list
       
       article = Article.find_by_name(params[:item_name])
-      if article#如果在Article db裡已經有此項目, 簡查是否在ArticleList中已經有存過同樣的article.id和list_id組合
+      if article#如果在Article db裡已經有此項目, 檢查是否在ArticleList中已經有存過同樣的article.id和list_id組合
         if ArticleList.repeat?(article, @list)
           #已經在此list中加入過此書
           #應該要不顯示「加入清單」的選項，或是顯示「已加入」
@@ -48,7 +49,7 @@ class ArticleListsController < ApplicationController
       end
     else
       #@article_list = nill
-      flash[:error] = "無法加入此項目 檢查@list"
+      flash[:error] = "加入此商品時出了一些問題"
     end
 
     if @article_list and @article_list.save
@@ -78,21 +79,28 @@ class ArticleListsController < ApplicationController
   # DELETE /article_lists/1
   # DELETE /article_lists/1.json
   def destroy
+    
     @article_list.destroy
 
-    @list = List.find(params[:list_id])
-    redirect_to list_path(@list.id), notice: 'Article list was successfully destroyed.'
+    
+    redirect_to list_path(params[:list_id]), notice: 'Article list was successfully destroyed.'
      
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article_list
-      @article_list = ArticleList.find(params[:id])
+      #@article_list = ArticleList.find(params[:id])
+      @article_list = List.find(params[:list_id]).article_lists.find_by_article_id(params[:article_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_list_params
-      params.require(:article_list).permit(:user_id, :stock_id)
+      params.require(:article_list).permit(:article_id, :list_id)
+    end
+
+    def set_article_list_destroy
+      @article_list = List.find(params[:list_id]).article_lists.find_by_article_id(params[:article_id])
+      #@article_list = ArticleList.where(article_id: params[:article_id], list_id: params[:list_id]) 
     end
 end

@@ -34,7 +34,7 @@
           </td>    
           <td>
             <%  if current_user and current_user.id == @list.user.id  %>
-              <%= link_to "刪除", article_list_path(books,:list_id => @list.id), method: :delete, data: {confirm: "確定刪除嗎? "}, class: 'btn btn-xs btn-danger' %>
+              <%= link_to "刪除", article_list_path(:article_id => books.id,:list_id => @list.id), method: :delete, data: {confirm: "確定刪除嗎? "}, class: 'btn btn-xs btn-danger' %>
             <% end %>       
           </td>
         </tr>
