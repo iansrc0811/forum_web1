@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   include Crawler
-  skip_before_action :authenticate_user!, only: [:show]
+  skip_before_action :authenticate_user!, only: [:show], raise: false
   before_action :set_list, only: [:edit, :update, :show, :destroy]
 
   def index
