@@ -21,21 +21,20 @@
       </tr>
     </thead>
     <tbody>
-      <% @book_items[0].count.times do |books| %>
+      <% @book_items.each_with_index do |books, index| %>
         <tr>
           <td>
-            <%= "#{books+1}" %>
 
+            <%= "#{index+1}" %>
           </td>
           <td>
-            <%= image_tag @book_items[2][books], id:"image_select", alt: "book-image", class: "img-thumbnail" %> 
+            <%= image_tag books[:book_image], id:"image_select", alt: "book-image", class: "img-thumbnail" %>
           </td>
           <td>
-            <%= link_to @book_items[0][books], @book_items[1][books],:target => "_blank"%> 
-          </td>    
+            <%= link_to books[:book_name], books[:book_link],:target => "_blank"%>
+          </td>
           <td>
-             <%= link_to "新增至清單", article_lists_path(:item_name => @book_items[0][books],:item_link => @book_items[1][books], :item_image => @book_items[2][books], :list_id => @list.id),  class: 'btn btn-xs btn-success', method: :post  %>
-            
+             <%= link_to "新增至清單", article_lists_path(item_name: books[:book_name], item_link: books[:book_link], item_image: books[:book_image], :list_id => @list.id),  class: 'btn btn-xs btn-success', method: :post  %>
           </td>
         </tr>
       <% end %>
